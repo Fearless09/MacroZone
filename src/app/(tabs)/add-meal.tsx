@@ -1,16 +1,14 @@
 import { MealInsert, useMealContext } from "@/context/MealContext";
-import { colors, globalStyles } from "@/styles/globalStyles";
+import {
+  buttonStyles,
+  colors,
+  globalStyles,
+  inputStyles,
+} from "@/styles/globalStyles";
 import * as Heptics from "expo-haptics";
 import { router } from "expo-router";
 import { useCallback, useState } from "react";
-import {
-  Alert,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 export const emptyForm = {
   name: "",
@@ -62,7 +60,7 @@ const AddMeal = () => {
       <Text style={globalStyles.title}>Add Meal</Text>
 
       <TextInput
-        style={styles.input}
+        style={inputStyles.input}
         placeholder="Meal name"
         placeholderTextColor={colors.textSecondary}
         value={formData.name}
@@ -70,7 +68,7 @@ const AddMeal = () => {
       />
 
       <TextInput
-        style={styles.input}
+        style={inputStyles.input}
         placeholder="Calories"
         placeholderTextColor={colors.textSecondary}
         keyboardType="numeric"
@@ -79,9 +77,9 @@ const AddMeal = () => {
         inputMode="numeric"
       />
 
-      <View style={styles.row}>
+      <View style={inputStyles.row}>
         <TextInput
-          style={[styles.input, styles.rowInput]}
+          style={[inputStyles.input, inputStyles.rowInput]}
           placeholder="Protein (g)"
           placeholderTextColor={colors.textSecondary}
           keyboardType="numeric"
@@ -90,7 +88,7 @@ const AddMeal = () => {
           inputMode="numeric"
         />
         <TextInput
-          style={[styles.input, styles.rowInput]}
+          style={[inputStyles.input, inputStyles.rowInput]}
           placeholder="Carbs (g)"
           placeholderTextColor={colors.textSecondary}
           keyboardType="numeric"
@@ -99,7 +97,7 @@ const AddMeal = () => {
           inputMode="numeric"
         />
         <TextInput
-          style={[styles.input, styles.rowInput]}
+          style={[inputStyles.input, inputStyles.rowInput]}
           placeholder="Fat (g)"
           placeholderTextColor={colors.textSecondary}
           keyboardType="numeric"
@@ -109,41 +107,11 @@ const AddMeal = () => {
         />
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handleAddMeal}>
-        <Text style={styles.buttonText}>Add Meal</Text>
+      <TouchableOpacity style={buttonStyles.button} onPress={handleAddMeal}>
+        <Text style={buttonStyles.buttonText}>Add Meal</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
 export default AddMeal;
-
-const styles = StyleSheet.create({
-  input: {
-    backgroundColor: colors.surface,
-    color: colors.text,
-    padding: 16,
-    borderRadius: 10,
-    fontSize: 16,
-    marginTop: 16,
-  },
-  row: {
-    flexDirection: "row",
-    columnGap: 10,
-  },
-  rowInput: {
-    flex: 1,
-  },
-  button: {
-    backgroundColor: colors.primary,
-    padding: 16,
-    borderRadius: 10,
-    alignItems: "center",
-    marginTop: 24,
-  },
-  buttonText: {
-    color: colors.background,
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-});
