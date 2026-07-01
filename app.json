@@ -1,23 +1,28 @@
 {
   "expo": {
     "name": "MacroZone",
-    "slug": "MacroZone",
+    "slug": "macrozone",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.svg",
+    "icon": "./assets/icon.png",
     "scheme": "macrozone",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/icon.svg",
+      "bundleIdentifier": "macrozone",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/icon.svg",
-        "backgroundImage": "./assets/icon.svg",
-        "monochromeImage": "./assets/icon.svg"
+        "foregroundImage": "./assets/icon.png",
+        "backgroundImage": "./assets/icon.png",
+        "monochromeImage": "./assets/icon.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.ope_yemi.macrozone"
     },
     "web": {
       "output": "static",
@@ -39,6 +44,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "febccb6c-071d-4b64-80d8-1a6b4cf46b15"
+      }
+    },
+    "owner": "ope_yemi"
   }
 }
