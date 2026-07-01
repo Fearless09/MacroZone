@@ -1,15 +1,27 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import { useColorScheme } from 'react-native';
+import MealContextProvider from "@/context/MealContext";
+import { colors } from "@/styles/globalStyles";
+import { Stack } from "expo-router";
+import { View } from "react-native";
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function RootLayout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
+    <MealContextProvider>
+      <View
+        style={{
+          height: 50,
+          width: "100%",
+          top: 0,
+          left: 0,
+          backgroundColor: colors.background,
+        }}
+      />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen
+          name="update-meal/[slug]"
+          options={{ presentation: "modal" }}
+        />
+      </Stack>
+    </MealContextProvider>
   );
 }
