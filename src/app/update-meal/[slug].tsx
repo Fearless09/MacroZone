@@ -23,17 +23,20 @@ const Updatemeal = () => {
   const { meals, mealDispatcher } = useMealContext();
   const meal = meals.find((m) => m.id === slug);
 
+  const [formData, setFormData] = useState(() => {
+    if (!meal) return emptyForm;
+    return {
+      name: meal.name,
+      calories: meal.calories.toString(),
+      protein: meal.protein.toString(),
+      carbs: meal.carbs.toString(),
+      fat: meal.fat.toString(),
+    };
+  });
+
   if (!meal) {
     return <Text style={globalStyles.empty}>No meal found.</Text>;
   }
-
-  const [formData, setFormData] = useState({
-    name: meal.name,
-    calories: meal.calories.toString(),
-    protein: meal.protein.toString(),
-    carbs: meal.carbs.toString(),
-    fat: meal.fat.toString(),
-  });
 
   const handleInputChange = (
     field: keyof MealInsert,
